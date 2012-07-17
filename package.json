@@ -3,22 +3,26 @@
   "name": "preetup",
   "description": "A dynamically generated slideshow of your meetup members, for a given event.",
   "version": "0.0.0",
-  "homepage": "http://preetup.jit.su",
+  "homepage": "http://preetup.herokuapp.com",
   "repository": {
     "type": "git",
     "url": "git://github.com/adunkman/preetup.git"
   },
   "dependencies": {
-     "express": "3.0.0beta7",
-     "jade": "0.26.3",
-     "connect-assets": "2.3.0",
-     "restless": "0.0.5",
-     "coffee-script": "1.3.3",
-     "stylus": "0.28.2"
+    "express": "3.0.0beta7",
+    "jade": "0.26.3",
+    "connect-assets": "2.3.0",
+    "restless": "0.0.5",
+    "coffee-script": "1.3.3",
+    "stylus": "0.28.2"
   },
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
     "node": "0.8.2"
+  },
+  "subdomain": "preetup",
+  "scripts": {
+    "start": "server.js"
   }
 }

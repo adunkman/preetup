@@ -25,6 +25,7 @@ app.use require "../services/meetup"
 # Controllers
 app.use require "./about"
 app.use require "./authentication"
+app.use require "./event"
 
 # Listen
 app.listen port

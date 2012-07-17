@@ -1,0 +1,17 @@
+doctype 5
+html
+   head
+      title
+         block title
+      
+      block styles
+         != css("skin")
+         != css("pages/about")
+         link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Overlock")
+
+      block scripts
+         != js("lib/jquery")
+         != js("skin")
+
+   body
+      block body

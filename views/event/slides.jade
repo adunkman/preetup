@@ -11,12 +11,12 @@ block body
          - var ampm = time.getHours() > 11 ? "pm" : "am";
          - var mins = time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes();
          - var hours = time.getHours() % 12;
-         p #{hours}:#{mins}#{ampm}: #{event.group.name} at #{event.venue.name}
+         p #{event.group.name} at #{event.venue.name}
 
       ul: each rsvp in rsvps
          li.rsvp
             h2
-               img(src=rsvp.member_photo.highres_link)
+               .img: img(src=rsvp.member_photo.highres_link)
                | #{rsvp.member.name}
 
 

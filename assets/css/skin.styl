@@ -1,7 +1,8 @@
 body
    margin: 0 
    padding: 0
-   
+   overflow-x: hidden
+
    color: #222
 
    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
@@ -18,7 +19,7 @@ body
       z-index: 1000
       width: 100%
 
-      margin: 0
+      margin: 0 
       padding: 20px 40px
       background-color: #E51937
       line-height: 1em
@@ -47,17 +48,27 @@ body
       background-color: #222
 
       h2
-         margin-top: 100px
-         padding: 20px 40px
+         margin: 100px 0 0 0
+         padding: 20px 40px 0 40px
 
          font-size: 2em
          line-height: 2em
 
-         img
+         .img
             float: left
             width: 30%
+            height: 700px
             margin-right: 20px
 
+            img
+               width: 100%
+
       .question
-         font-size: 1.5em
+         margin: 20px 0 10px 0 
+         font-size: 1.3em
          color: rgba(255, 255, 255, 0.9)
+
+      .answer
+         margin: 0 0 40px 0
+         font-size: 1.5em
+         font-weight: bold

@@ -1,0 +1,12 @@
+extends ../layout
+
+block title
+   | events - preetup
+
+block body
+   h1 Your events
+
+   ul: each event in results
+      li
+         a(href="/#{event.group.urlname}/events/#{event.id}")= event.name
+         != event.description

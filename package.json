@@ -1,0 +1,17 @@
+{
+  "author": "Andrew Dunkman <andrew@dunkman.org> (http://dunkman.org)",
+  "name": "preetup",
+  "description": "A dynamically generated slideshow of your meetup members, for a given event.",
+  "version": "0.0.0",
+  "homepage": "http://preetup.jit.su",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/adunkman/preetup.git"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}

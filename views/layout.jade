@@ -24,6 +24,6 @@ html
                a(href="/logout").logout Logout
 
             if !authenticated
-               a(href="/login").login Login
+               a(href="/login?redirectUri=/events").login Login
 
       p.issues <strong>Find a bug?</strong> <a href="http://github.com/adunkman/preetup/issues">Create an issue</a> on github and I&rsquo;ll try to get it fixed ASAP!

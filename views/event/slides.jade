@@ -7,10 +7,6 @@ block title
 block body
    body.slides
       h1= event.name
-         - var time = new Date(event.time);
-         - var ampm = time.getHours() > 11 ? "pm" : "am";
-         - var mins = time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes();
-         - var hours = time.getHours() % 12;
          p #{event.group.name} at #{event.venue.name}
 
       ul: each rsvp in rsvps
@@ -19,7 +15,7 @@ block body
                .img: img(src=rsvp.member_photo.highres_link)
                | #{rsvp.member.name}
 
-
-            dl: each answer, index in rsvp.answers
-               dt.question= event.survey_questions[index].question
-               dd.answer= answer || "(no response)"
+            if rsvp.answers
+               dl: each answer, index in rsvp.answers
+                  dt.question= event.survey_questions[index].question
+                  dd.answer= answer || "(no response)"

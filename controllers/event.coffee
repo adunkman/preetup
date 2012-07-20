@@ -11,14 +11,19 @@ app.get "/events", (req, res, next) ->
       res.redirect "/login?redirectUri=/events"
 
 app.get "/:orgname/events/:id", (req, res, next) ->
-   async.parallel {
-      rsvps: (done) ->
-         req.services.meetup.get "/2/rsvps.json?event_id=#{req.params.id}&rsvp=yes", done
-      event: (done) ->
-         req.services.meetup.get "/2/event/#{req.params.id}.json?fields=survey_questions", done
-   }, (error, data) ->
-      return next error if error
-      data.rsvps = data.rsvps[0].results
-      data.event = data.event[0]
+   if res.locals().authenticated
+      async.parallel {
+         rsvps: (done) ->
+            req.services.meetup.get "/2/rsvps.json?event_id=#{req.params.id}&rsvp=yes", done
+         event: (done) ->
+            req.services.meetup.get "/2/event/#{req.params.id}.json?fields=survey_questions", done
+      }, (error, data) ->
+         return next error if error
+         data.rsvps = data.rsvps[0].results
+         data.event = data.event[0]
 
-      res.render "event/slides", data
+         console.log data
+
+         res.render "event/slides", data
+   else
+      res.redirect "/login?redirectUri=/#{req.params.orgname}/events/#{req.params.id}"

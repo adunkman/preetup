@@ -18,6 +18,7 @@ app.use require("connect-assets")()
 app.use express.static __dirname + "/../public"
 app.use express.cookieParser()
 app.use express.session secret: "b4f78e7b-eb09-413f-9388-988fef16c29c"
+app.use require "../middleware/authentication"
 
 # Services
 app.use require "../services/meetup"

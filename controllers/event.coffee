@@ -3,9 +3,12 @@ express = require "express"
 app = module.exports = express.createServer()
 
 app.get "/events", (req, res, next) ->
-   req.services.meetup.get "/2/events.json?member_id=self", (error, data) ->
-      return next error if error
-      res.render "event/list", data
+   if res.locals().authenticated
+      req.services.meetup.get "/2/events.json?member_id=self", (error, data) ->
+         return next error if error
+         res.render "event/list", data
+   else
+      res.redirect "/login?redirectUri=/events"
 
 app.get "/:orgname/events/:id", (req, res, next) ->
    async.parallel {

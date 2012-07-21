@@ -1,11 +1,15 @@
 $(document).ready () ->
-   selector = "body.slides .rsvp"
+   selector = "body.event-slides .slide"
    slideCount = $(selector).length
    currentIndex = 0
 
    advanceSlide = () ->
-      $(selector).hide();
-      $($(selector)[currentIndex++]).show();
-      window.setTimeout advanceSlide, 10000
+      $($(selector)[currentIndex]).fadeOut () ->
+         $($(selector)[++currentIndex]).fadeIn();
 
-   advanceSlide()
+         if currentIndex is slideCount - 1 then currentIndex = 0
+         window.setTimeout advanceSlide, 10000
+
+   if slideCount > 0
+      $(selector).hide();
+      advanceSlide()

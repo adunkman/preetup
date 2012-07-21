@@ -5,11 +5,12 @@ block title
 
 block body
    h1= event.name
-      p #{event.group.name}
+      p #{event.group.name + " "}
          if event.venue
             | <span class="separator">at</span> #{event.venue.name}
 
    ul: each rsvp in rsvps
+      - var profile = profiles[rsvp.member.member_id];
       li.slide
          if rsvp.member_photo
             img(src=rsvp.member_photo.photo_link)
@@ -26,7 +27,14 @@ block body
                if rsvp.member.other_services && rsvp.member.other_services.twitter
                   span.twitter-handle= rsvp.member.other_services.twitter.identifier
 
-            p= rsvp.comments
+            p.comments
+               | #{rsvp.comments ? rsvp.comments + " &bull; " : ""}
+               | #{profile ? profile.bio : ""}
+
+            if profile && profile.answers
+               dl: each response in profile.answers
+                  dt.question= response.question
+                  dd.answer= response.answer
 
             if rsvp.answers
                dl: each answer, index in rsvp.answers

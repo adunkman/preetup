@@ -4,6 +4,9 @@
    padding: 0
    color: #fff
 
+   .issues
+      display: none
+
    h1
       margin: 0
       padding: 4px 20px 10px 20px
@@ -20,7 +23,7 @@
          .separator
             color: #F5ACB7
 
-   ul
+   ul, dl, dt, dd
       margin: 0
       padding: 0
 
@@ -53,32 +56,48 @@
       .text
          margin-left: image-width+20px
 
-         h2
-            margin: 0
-            font-size: 2.2em
+      h2
+         margin: 0
+         font-size: 2.2em
 
-            .twitter.icon
-            .facebook.icon
-            .linkedin.icon
-               width: 50px
-               height: 50px
-               float: right
-               margin-left: 10px
-               border-radius: 5px
-               opacity: 0.7
-               background: no-repeat center center
+         .twitter.icon
+         .facebook.icon
+         .linkedin.icon
+            width: 50px
+            height: 50px
+            float: right
+            margin-left: 10px
+            border-radius: 5px
+            opacity: 0.7
+            background: no-repeat center center
 
-               &.facebook
-                  background-image: url("/services/facebook.png")
+            &.facebook
+               background-image: url("/services/facebook.png")
 
-               &.twitter
-                  background-image: url("/services/twitter.png")
+            &.twitter
+               background-image: url("/services/twitter.png")
 
-               &.linkedin
-                  background-image: url("/services/linkedin.png")
+            &.linkedin
+               background-image: url("/services/linkedin.png")
 
-            .twitter-handle
-               font-size: 0.6em
-               font-weight: normal
-               color: #999
+         .twitter-handle
+            font-size: 0.6em
+            font-weight: normal
+            color: #999
 
+      .comments
+         font-size: 1.5em
+         line-height: 1.4em
+
+         color: #999
+
+      .question
+         margin-top: 30px
+         font-size: 1.5em
+         line-height: 1.4em
+
+         color: #999
+
+      .answer
+         font-size: 1.9em
+         line-height: 1.4em

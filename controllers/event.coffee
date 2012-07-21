@@ -14,15 +14,20 @@ app.get "/:orgname/events/:id", (req, res, next) ->
    if res.locals().authenticated
       async.parallel {
          rsvps: (done) ->
-            req.services.meetup.get "/2/rsvps.json?event_id=#{req.params.id}&rsvp=yes&fields=other_services", done
+            req.services.meetup.get "/2/rsvps.json?event_id=#{req.params.id}&page=1000&rsvp=yes&fields=other_services", done
          event: (done) ->
             req.services.meetup.get "/2/event/#{req.params.id}.json?fields=survey_questions", done
+         profiles: (done) ->
+            req.services.meetup.get "/2/profiles?group_urlname=#{req.params.orgname}&page=1000", done
       }, (error, data) ->
          return next error if error
          data.rsvps = data.rsvps[0].results
          data.event = data.event[0]
 
-         console.log data.rsvps
+         profiles = {}
+         for profile in data.profiles[0].results
+            profiles[profile.member_id] = profile
+         data.profiles = profiles
 
          res.render "event/slides", data
    else

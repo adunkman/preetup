@@ -4,10 +4,11 @@ $(document).ready () ->
    currentIndex = 0
 
    advanceSlide = () ->
-      $($(selector)[currentIndex]).fadeOut () ->
-         $($(selector)[++currentIndex]).fadeIn();
+      previous = currentIndex % slideCount
+      current = ++currentIndex % slideCount
 
-         if currentIndex is slideCount - 1 then currentIndex = 0
+      $($(selector)[previous]).fadeOut () ->
+         $($(selector)[current]).fadeIn();
          window.setTimeout advanceSlide, 10000
 
    if slideCount > 0

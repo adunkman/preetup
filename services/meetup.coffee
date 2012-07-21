@@ -4,7 +4,7 @@ middleware = module.exports = (req, res, next) ->
    data = req.session.authorization
 
    req.services or= {}
-   req.services.meetup = 
+   req.services.meetup =
       get: (uri, options, callback) ->
          if arguments.length is 2
             callback = options
@@ -15,7 +15,7 @@ middleware = module.exports = (req, res, next) ->
          options.parser = rest.parsers.json
 
          url = "https://api.meetup.com#{uri}"
-         
+
          rest.get url, options, callback
-   
+
    next()

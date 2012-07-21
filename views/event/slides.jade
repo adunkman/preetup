@@ -1,21 +1,36 @@
-- var bodyClass = "slides";
 extends ../layout
 
 block title
-   | #{event.name} - preetup
+   | #{event.name} &bull; Preetup
 
 block body
-   body.slides
-      h1= event.name
-         p #{event.group.name} at #{event.venue.name}
+   h1= event.name
+      p #{event.group.name}
+         if event.venue
+            | <span class="separator">at</span> #{event.venue.name}
 
-      ul: each rsvp in rsvps
-         li.rsvp
+   ul: each rsvp in rsvps
+      li.slide
+         if rsvp.member_photo
+            img(src=rsvp.member_photo.photo_link)
+         else
+            .img-placeholder :(
+
+         .text
             h2
-               .img: img(src=rsvp.member_photo.highres_link)
-               | #{rsvp.member.name}
+               if rsvp.member.other_services
+                  each handle, service in rsvp.member.other_services
+                     .icon(class=service)
+               | #{rsvp.member.name + " "}
+
+               if rsvp.member.other_services && rsvp.member.other_services.twitter
+                  span.twitter-handle= rsvp.member.other_services.twitter.identifier
+
+            p= rsvp.comments
 
             if rsvp.answers
                dl: each answer, index in rsvp.answers
                   dt.question= event.survey_questions[index].question
                   dd.answer= answer || "(no response)"
+
+         .clear

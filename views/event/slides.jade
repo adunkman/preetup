@@ -33,12 +33,14 @@ block body
 
             if profile && profile.answers
                dl: each response in profile.answers
-                  dt.question= response.question
-                  dd.answer= response.answer
+                  if response.answer
+                     dt.question= response.question
+                     dd.answer= response.answer
 
             if rsvp.answers
                dl: each answer, index in rsvp.answers
-                  dt.question= event.survey_questions[index].question
-                  dd.answer= answer || "(no response)"
+                  if answer
+                     dt.question= event.survey_questions[index].question
+                     dd.answer= answer
 
          .clear

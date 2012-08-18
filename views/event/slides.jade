@@ -12,10 +12,17 @@ block body
    ul: each rsvp in rsvps
       - var profile = profiles[rsvp.member.member_id];
       li.slide
-         if rsvp.member_photo
-            img(src=rsvp.member_photo.photo_link)
-         else
-            .img-placeholder :(
+         .side
+            if rsvp.member_photo
+               img(src=rsvp.member_photo.photo_link)
+            else
+               .img-placeholder :(
+
+            if rsvp.member.other_services && rsvp.member.other_services.twitter
+               - var handle = rsvp.member.other_services.twitter.identifier;
+               .tweet(data-twitter-handle=handle)
+                  h3= handle + ":"
+                  p.message Loading&hellip;
 
          .text
             h2
@@ -23,9 +30,6 @@ block body
                   each handle, service in rsvp.member.other_services
                      .icon(class=service)
                | #{rsvp.member.name + " "}
-
-               if rsvp.member.other_services && rsvp.member.other_services.twitter
-                  span.twitter-handle= rsvp.member.other_services.twitter.identifier
 
             p.comments
                | #{rsvp.comments ? rsvp.comments + " &bull; " : ""}

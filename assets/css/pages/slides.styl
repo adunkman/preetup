@@ -35,23 +35,39 @@
 
       padding: 20px
 
-      img
+      .side
          float: left
          width: image-width
-         border-radius: 10px
 
-      .img-placeholder
-         float: left
-         width: image-width
-         padding: ((image-width - 100px)/2) 0
+         img
+            display: block
+            width: image-width
+            border-radius: 10px
 
-         border-radius: 10px
-         background-color: #333
+         .img-placeholder
+            display: block
+            width: image-width
+            padding: ((image-width - 100px)/2) 0
 
-         color: #444
-         text-align: center
-         font-size: 100px
-         line-height: 100px
+            border-radius: 10px
+            background-color: #333
+
+            color: #444
+            text-align: center
+            font-size: 100px
+            line-height: 100px
+
+         .tweet
+            padding-top: 20px
+            width: image-width
+            overflow: hidden
+            text-overflow: ellipsis
+
+            h3
+               margin: 0
+               text-overflow: ellipsis
+               overflow: hidden
+               white-space: nowrap
 
       .text
          margin-left: image-width+20px

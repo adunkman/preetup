@@ -1,4 +1,4 @@
-rest = require "restless"
+request = require "request"
 
 middleware = module.exports = (req, res, next) ->
    data = req.session.authorization
@@ -10,12 +10,13 @@ middleware = module.exports = (req, res, next) ->
             callback = options
             options = {}
 
-         options.query = {} unless options.query
-         options.query.access_token = data.access_token
-         options.parser = rest.parsers.json
+         options.qs = {} unless options.qs
+         options.qs.access_token = data.access_token
+         options.url = "https://api.meetup.com#{uri}"
 
-         url = "https://api.meetup.com#{uri}"
-
-         rest.get url, options, callback
+         request options, (error, response, data) ->
+            if error then callback error
+            else if response.statusCode >= 400 then callback response
+            else callback null, JSON.parse data
 
    next()
